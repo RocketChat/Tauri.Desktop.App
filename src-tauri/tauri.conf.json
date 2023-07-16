@@ -4,7 +4,7 @@
     "beforeBuildCommand": "yarn build",
     "devPath": "http://localhost:1420",
     "distDir": "../dist",
-    "withGlobalTauri": false
+    "withGlobalTauri": true
   },
   "package": {
     "productName": "rocketchat-tauri",
@@ -12,7 +12,7 @@
   },
   "tauri": {
     "allowlist": {
-      "all": false,
+      "all": true,
       "shell": {
         "all": false,
         "open": true
@@ -34,17 +34,30 @@
       "targets": "all"
     },
     "security": {
-      "csp": null
+      "csp": "default-src 'self'; connect-src 'self' wss://open.rocket.chat; frame-src 'self' https://open.rocket.chat; img-src 'self' https://open.rocket.chat; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'",
+      "devCsp": "default-src 'self'; connect-src 'self' wss://open.rocket.chat; frame-src 'self' https://open.rocket.chat; img-src 'self' https://open.rocket.chat; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'",
+      "dangerousRemoteDomainIpcAccess": [
+        {
+          "domain": "open.rocket.chat",
+          "windows": ["main"],
+          "plugins": [],
+          "scheme": "all",
+          "enableTauriAPI": true
+        }
+      ]
     },
     "updater": {
       "active": false
     },
     "windows": [
       {
+        "userAgent": "Tauri-Rocket.Chat-Client/1.0.0",
+        "label": "main",
+        "url": "https://open.rocket.chat/login",
         "fullscreen": false,
         "resizable": true,
         "title": "Rocket Chat",
-        "titleBarStyle": "Overlay", 
+        "titleBarStyle": "Overlay",
         "width": 800,
         "height": 600
       }
