@@ -1,10 +1,7 @@
 {
   "build": {
-    "beforeDevCommand": "yarn dev",
-    "beforeBuildCommand": "yarn build",
-    "devPath": "http://localhost:1420",
-    "distDir": "../dist",
-    "withGlobalTauri": true
+    "withGlobalTauri": true,
+    "devPath": "https://open.rocket.chat"
   },
   "package": {
     "productName": "rocketchat-tauri",
@@ -12,13 +9,8 @@
   },
   "tauri": {
     "allowlist": {
-      "all": true,
-      "shell": {
-        "all": false,
-        "open": true
-      },
-      "os": {
-        "all" : true
+      "notification": {
+        "all": true
       }
     },
     "bundle": {
@@ -33,14 +25,15 @@
       "identifier": "com.tauri.dev",
       "targets": "all"
     },
+    "pattern": {
+      "use": "brownfield"
+    },
     "security": {
-      "csp": "default-src 'self'; connect-src 'self' wss://open.rocket.chat; frame-src 'self' https://open.rocket.chat; img-src 'self' https://open.rocket.chat; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'",
-      "devCsp": "default-src 'self'; connect-src 'self' wss://open.rocket.chat; frame-src 'self' https://open.rocket.chat; img-src 'self' https://open.rocket.chat; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'",
       "dangerousRemoteDomainIpcAccess": [
         {
           "domain": "open.rocket.chat",
-          "windows": ["main"],
-          "plugins": [],
+          "windows": ["core"],
+          "plugins": ["event"],
           "scheme": "all",
           "enableTauriAPI": true
         }
@@ -49,19 +42,6 @@
     "updater": {
       "active": false
     },
-    "windows": [
-      {
-        "userAgent": "Tauri-Rocket.Chat-Client/1.0.0",
-        "label": "main",
-        "url": "https://open.rocket.chat/login",
-        "fullscreen": false,
-        "resizable": true,
-        "title": "Rocket Chat",
-        "titleBarStyle": "Overlay",
-        "width": 800,
-        "height": 600
-      }
-    ],
     "systemTray": {
       "iconPath": "icons/icon.png",
       "iconAsTemplate": true
