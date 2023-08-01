@@ -1,9 +1,12 @@
 use std::env;
 use std::fs;
 use tauri::Manager;
+use tauri::generate_handler;
+// use notify_rust::Notification;
+use tauri::api::notification::Notification;
 use tauri::{
     CustomMenuItem, SystemTray, SystemTrayEvent, SystemTrayMenu, TitleBarStyle,
-    WindowBuilder,
+    WindowBuilder
 };
 
 fn read_script() -> &'static str {
@@ -20,6 +23,24 @@ fn read_script() -> &'static str {
     Box::leak(contents.into_boxed_str())
 }
 
+#[tauri::command]
+fn send_notification(notification_data: serde_json::Value) {
+    let title = notification_data["title"].as_str().unwrap();
+    let body = notification_data["body"].as_str().unwrap();
+    // let tag = notification_data["tag"].as_str().unwrap();
+    // let data = notification_data["data"].as_str().unwrap();
+    println!("Notificatin Recieved with title {} and body {}", title.to_string(), body.to_string());
+
+    let notification: Notification = Notification::new("com.rocket.chat").title(title.to_string()).body(body.to_string());
+
+    let result = notification.show().map_err(|e| e.to_string());
+
+match result {
+    Ok(()) => println!("Ok, Notification Shown"),
+    Err(e) => println!("Error: {}", e),
+}
+}   
+
 fn main() {
     let quit_item = CustomMenuItem::new("quit", "Quit");
     let hide_item = CustomMenuItem::new("hide", "Hide");
@@ -27,7 +48,7 @@ fn main() {
         .add_item(quit_item)
         .add_item(hide_item);
 
-    tauri::Builder::default()
+    let app = tauri::Builder::default()
         .system_tray(SystemTray::new().with_menu(tray_menu))
         .on_system_tray_event(|app, event| match event {
             SystemTrayEvent::MenuItemClick { id, .. } => match id.as_str() {
@@ -41,8 +62,9 @@ fn main() {
                 _ => {}
             },
             _ => {}
-        })
+        }).invoke_handler(generate_handler![send_notification])
         .setup(|app| {
+    
             let script = read_script();
 
             WindowBuilder::new(app, "core", tauri::WindowUrl::External(format!("https://open.rocket.chat").parse().unwrap()))
@@ -51,8 +73,9 @@ fn main() {
             Ok(())
             
         })
-        .run(tauri::generate_context!())
+        .build(tauri::generate_context!())
         .expect("error while running tauri application");
 
+        app.run(|_app_handle, _event| {});
     
 }
