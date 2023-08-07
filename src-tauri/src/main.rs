@@ -68,7 +68,7 @@ fn main() {
             let script = read_script();
 
             WindowBuilder::new(app, "core", tauri::WindowUrl::External(format!("https://open.rocket.chat").parse().unwrap()))
-            .user_agent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15").title_bar_style(TitleBarStyle::Overlay).title("Rocket.Chat Tauri").inner_size(800 as f64, 600 as f64).initialization_script(script).build()?;
+            .user_agent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15").title_bar_style(TitleBarStyle::Visible).title("Rocket.Chat Tauri").inner_size(800 as f64, 600 as f64).initialization_script(script).build()?;
 
             Ok(())
             

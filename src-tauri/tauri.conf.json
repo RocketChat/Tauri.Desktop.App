@@ -4,7 +4,7 @@
     "devPath": "https://open.rocket.chat"
   },
   "package": {
-    "productName": "rocketchat-tauri",
+    "productName": "Rocket Chat Tauri App",
     "version": "0.0.0"
   },
   "tauri": {
@@ -18,50 +18,10 @@
         "scope": []
       },
       "window": {
-        "all": true,
-        "center": false,
-        "close": false,
-        "create": false,
-        "hide": false,
-        "maximize": false,
-        "minimize": false,
-        "print": false,
-        "requestUserAttention": false,
-        "setAlwaysOnTop": false,
-        "setContentProtected": false,
-        "setCursorGrab": false,
-        "setCursorIcon": false,
-        "setCursorPosition": false,
-        "setCursorVisible": false,
-        "setDecorations": false,
-        "setFocus": false,
-        "setFullscreen": false,
-        "setIcon": false,
-        "setIgnoreCursorEvents": false,
-        "setMaxSize": false,
-        "setMinSize": false,
-        "setPosition": false,
-        "setResizable": false,
-        "setSize": false,
-        "setSkipTaskbar": false,
-        "setTitle": false,
-        "show": false,
-        "startDragging": false,
-        "unmaximize": false,
-        "unminimize": false
+        "all": true
       },
       "fs": {
-        "all": true,
-        "copyFile": false,
-        "createDir": false,
-        "exists": true,
-        "readDir": false,
-        "readFile": false,
-        "removeDir": false,
-        "removeFile": false,
-        "renameFile": false,
-        "scope": [],
-        "writeFile": true
+        "all": true
       },
       "path": {
         "all": true
