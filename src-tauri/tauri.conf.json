@@ -1,24 +1,37 @@
 {
   "build": {
-    "beforeDevCommand": "yarn dev",
-    "beforeBuildCommand": "yarn build",
-    "devPath": "http://localhost:1420",
-    "distDir": "../dist",
-    "withGlobalTauri": false
+    "withGlobalTauri": true,
+    "devPath": "https://open.rocket.chat"
   },
   "package": {
-    "productName": "rocketchat-tauri",
+    "productName": "Rocket Chat Tauri App",
     "version": "0.0.0"
   },
   "tauri": {
     "allowlist": {
-      "all": false,
+      "notification": {
+        "all": true
+      },
+      "http": {
+        "all": true,
+        "request": true,
+        "scope": []
+      },
+      "window": {
+        "all": true
+      },
+      "fs": {
+        "all": true
+      },
+      "path": {
+        "all": true
+      },
       "shell": {
         "all": false,
-        "open": true
-      },
-      "os": {
-        "all" : true
+        "execute": true,
+        "open": false,
+        "scope": [],
+        "sidecar": false
       }
     },
     "bundle": {
@@ -30,25 +43,35 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
-      "targets": "all"
+      "identifier": "com.rocket.chat.tauri.dev",
+      "targets": "all",
+      "macOS": {
+        "frameworks": [],
+        "minimumSystemVersion": "",
+        "exceptionDomain": "",
+        "signingIdentity": null,
+        "providerShortName": null,
+        "entitlements": null
+      }
+    },
+    "pattern": {
+      "use": "brownfield"
     },
     "security": {
-      "csp": null
+      "dangerousRemoteDomainIpcAccess": [
+        {
+          "domain": "open.rocket.chat",
+          "windows": ["core"],
+          "plugins": ["event"],
+          "scheme": "all",
+          "enableTauriAPI": true
+        }
+      ]
     },
+    "macOSPrivateApi": true,
     "updater": {
       "active": false
     },
-    "windows": [
-      {
-        "fullscreen": false,
-        "resizable": true,
-        "title": "Rocket Chat",
-        "titleBarStyle": "Overlay", 
-        "width": 800,
-        "height": 600
-      }
-    ],
     "systemTray": {
       "iconPath": "icons/icon.png",
       "iconAsTemplate": true
