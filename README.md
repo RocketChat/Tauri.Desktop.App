@@ -16,6 +16,14 @@ During the Google Summer of Code Period, My Primary Focus would be on the follow
 experience.
 8. Distributing the app for MacOS.
 
+# Dependencies
+```
+yarn
+node.js 16 or above
+rust and cargo
+```
+For installing rust follow the following [documentation](https://www.rust-lang.org/tools/install)
+
 ## Running the Project
 ### Installing Dependencies
 ```
