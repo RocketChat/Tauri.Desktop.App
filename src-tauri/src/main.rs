@@ -31,7 +31,7 @@ fn send_notification(notification_data: serde_json::Value) {
     // let data = notification_data["data"].as_str().unwrap();
     println!("Notificatin Recieved with title {} and body {}", title.to_string(), body.to_string());
 
-    let notification: Notification = Notification::new("com.rocket.chat").title(title.to_string()).body(body.to_string());
+    let notification: Notification = Notification::new("com.rocket.chat.tauri.dev").title(title.to_string()).body(body.to_string());
 
     let result = notification.show().map_err(|e| e.to_string());
 

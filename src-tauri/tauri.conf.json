@@ -63,6 +63,9 @@
         "scope": [],
         "writeFile": true
       },
+      "path": {
+        "all": true
+      },
       "shell": {
         "all": false,
         "execute": true,
@@ -80,8 +83,16 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.rocket.chat",
-      "targets": "all"
+      "identifier": "com.rocket.chat.tauri.dev",
+      "targets": "all",
+      "macOS": {
+        "frameworks": [],
+        "minimumSystemVersion": "",
+        "exceptionDomain": "",
+        "signingIdentity": null,
+        "providerShortName": null,
+        "entitlements": null
+      }
     },
     "pattern": {
       "use": "brownfield"
@@ -97,6 +108,7 @@
         }
       ]
     },
+    "macOSPrivateApi": true,
     "updater": {
       "active": false
     },
