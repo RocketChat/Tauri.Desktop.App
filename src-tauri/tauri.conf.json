@@ -1,6 +1,7 @@
 {
   "build": {
     "withGlobalTauri": true,
+    "beforeDevCommand": "yarn dev",
     "devPath": "https://open.rocket.chat"
   },
   "package": {
@@ -26,10 +27,21 @@
       "path": {
         "all": true
       },
+      "protocol": {
+        "all": true
+      },
+      "dialog": {
+        "all": true,
+        "ask": true,
+        "confirm": true,
+        "message": true,
+        "open": true,
+        "save": true
+      },
       "shell": {
         "all": false,
         "execute": true,
-        "open": false,
+        "open": true,
         "scope": [],
         "sidecar": false
       }
