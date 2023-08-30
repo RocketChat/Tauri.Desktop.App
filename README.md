@@ -4,7 +4,7 @@ Mentored By Jean Brito & David Allen
 
 <img width="1237" alt="Untitled" src="https://github.com/RocketChat/Tauri.Desktop.App/assets/72302948/16f7ba84-090b-4434-9772-d72bf25654c5">
 
-# Dependencies
+## Dependencies
 ```
 yarn
 node.js 16 or above
