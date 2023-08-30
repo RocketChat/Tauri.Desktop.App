@@ -30,7 +30,11 @@ if you ran into any issue, try running ``yarn run tauri build``
 
 ## GSOC'23 Demo Day Video
 
-<a href="https://youtu.be/ZXy7zwdcl_s?si=vTeftX-rxjQxRc1M"><img width="1574" alt="image" src="https://github.com/RocketChat/Tauri.Desktop.App/assets/72302948/d8efa1ec-29bc-4683-8072-c089d694862b"></a>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=ZXy7zwdcl_s" target="_blank">
+ <img src="http://img.youtube.com/vi/ZXy7zwdcl_s/maxres2.jpg" alt="Watch the video" />
+</a>
+
+
 
 ## Project’s Aim 🎯
 
